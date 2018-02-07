@@ -26,12 +26,12 @@ function createCatContainers(categories) {
     fetch(pListLink).then(result => result.json()).then(data => showProducts(data));
 }
 
-function filter(myFilter){
+function filter(myFilter) {
 
-    document.querySelectorAll("main section").forEach(section=>{
-        if(section.id == myFilter || myFilter == "menu"){
+    document.querySelectorAll("main section").forEach(section => {
+        if (section.id == myFilter || myFilter == "menu") {
             section.classList.remove("hide");
-        }else{
+        } else {
             section.classList.add("hide");
         }
     });
@@ -42,18 +42,20 @@ function showProducts(data) {
     data.forEach(elem => {
         const section = document.querySelector("#" + elem.category);
         const clone = template.cloneNode(true);
+
         clone.querySelector("img").src = "http://kea-alt-del.dk/t5/site/imgs/small/" + elem.image + "-sm.jpg";
         clone.querySelector("h2").textContent = elem.name;
         clone.querySelector("p").textContent = elem.shortdescription;
         clone.querySelector(".price span").textContent = elem.price;
+
         if (elem.discount) {
             const newPrice = Math.ceil(elem.price - elem.price * elem.discount / 100);
             clone.querySelector(".discountprice span").textContent = newPrice;
-            clone.querySelector(".discountprice.hide").classList.remove("hide")
+            clone.querySelector(".discountprice.hide").classList.remove("hide");
             clone.querySelector(".price").classList.add("strike");
         }
+
         if (elem.alcohol) { //elem.alcohol could be 0;
-            console.log("alcohol")
             const newImage = document.createElement("img");
             newImage.setAttribute("src", "images/icons/alc.png");
             newImage.setAttribute("alt", "Contains alcohol " + elem.alcohol + "%");
@@ -62,12 +64,19 @@ function showProducts(data) {
         }
 
         if (elem.vegetarian) { //elem.vegetarian could be 0;
-            console.log("vegetarian")
             const newImage = document.createElement("img");
             newImage.setAttribute("src", "images/icons/veg.png");
             newImage.setAttribute("alt", "Vegetarian");
             newImage.setAttribute("title", "Vegetarian");
             clone.querySelector(".icons").appendChild(newImage);
+        }
+
+        if (elem.soldout) { //elem.soldout could be 0;
+            const newImage = document.createElement("img");
+            newImage.setAttribute("src", "images/icons/soldout.png");
+            newImage.setAttribute("alt", "Sold out");
+            newImage.setAttribute("title", "Sold out");
+            clone.querySelector(".soldout").appendChild(newImage);
         }
         section.appendChild(clone);
     })
