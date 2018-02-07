@@ -1,0 +1,111 @@
+/*///////////////// STYLING /////////////////*/
+
+
+.stylepage {
+    max-width: 1000px;
+    padding: 1em;
+    margin: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0em;
+    font-size: 1.1em;
+}
+
+nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:link {
+    color: #cc4f31;
+}
+
+nav a:visited {
+    color: #cc4f31;
+}
+
+nav a:hover {
+    color: #f9f9f9;
+    background-color: #ffda36;
+    transition: all 1s;
+}
+
+nav a:active {
+    color: yellow;
+}
+
+a {
+    display: inline-block;
+    padding: 8px;
+    /*font-family: raleway;*/
+    /*float: right;*/
+}
+
+#menu {
+    background-color: white;
+}
+
+h1{
+}
+
+
+/*///////////////// GRID + CODE FROM CLASS /////////////////*/
+
+
+main section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-gap: 1em;
+}
+
+article {
+    background: white;
+    position: relative;
+}
+
+section h2 {
+    grid-column: 1/-1;
+}
+
+article:nth-child(even) {
+    background: white;
+}
+
+article > img {
+    width: 100%;
+}
+
+
+.icons img {
+    display: inline-block;
+    width: 15%;
+}
+
+.price,
+.discountprice {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0.5em;
+    background: #ccc;
+}
+
+.price {
+    left: 0;
+}
+
+.discountprice {
+    right: 0;
+    background: yellowgreen;
+}
+
+.hide {
+    display: none;
+}
+
+.strike {
+    text-decoration: line-through;
+}
