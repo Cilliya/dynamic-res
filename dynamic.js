@@ -54,20 +54,26 @@ function showProducts(data) {
         console.log(elem.id);
         const section = document.querySelector("#" + elem.category);
         const clone = template.cloneNode(true);
+
         clone.querySelector("img").src = "http://kea-alt-del.dk/t5/site/imgs/small/" + elem.image + "-sm.jpg";
         clone.querySelector("h2").textContent = elem.name;
         clone.querySelector("p").textContent = elem.shortdescription;
         clone.querySelector(".price span").textContent = elem.price;
+
         clone.querySelector("button").addEventListener("click", () => {
 
             fetch(pLink + elem.id).then(result => result.json()).then(product => showDetails(product));
         })
+
+
+
         if (elem.discount) {
             const newPrice = Math.ceil(elem.price - elem.price * elem.discount / 100);
             clone.querySelector(".discountprice span").textContent = newPrice;
-            clone.querySelector(".discountprice.hide").classList.remove("hide")
+            clone.querySelector(".discountprice.hide").classList.remove("hide");
             clone.querySelector(".price").classList.add("strike");
         }
+
         if (elem.alcohol) { //elem.alcohol could be 0;
             const newImage = document.createElement("img");
             newImage.setAttribute("src", "images/icons/alc.png");
@@ -82,6 +88,14 @@ function showProducts(data) {
             newImage.setAttribute("alt", "Vegetarian");
             newImage.setAttribute("title", "Vegetarian");
             clone.querySelector(".icons").appendChild(newImage);
+        }
+
+        if (elem.soldout) { //elem.soldout could be 0;
+            const newImage = document.createElement("img");
+            newImage.setAttribute("src", "images/icons/soldout.png");
+            newImage.setAttribute("alt", "Sold out");
+            newImage.setAttribute("title", "Sold out");
+            clone.querySelector(".soldout").appendChild(newImage);
         }
         section.appendChild(clone);
     })
