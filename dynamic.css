@@ -5,6 +5,11 @@
     max-width: 1000px;
     padding: 1em;
     margin: auto;
+    border-bottom: solid;
+}
+h1 {
+    text-align: center;
+
 }
 
 nav ul {
@@ -12,6 +17,7 @@ nav ul {
     text-align: center;
     margin: 0em;
     font-size: 1.1em;
+    font-family:
 }
 
 nav a {
@@ -40,19 +46,23 @@ nav a:active {
 a {
     display: inline-block;
     padding: 10px;
-    /*font-family: raleway;*/
+    font-family: 'Courier New', 'Delius Unicase', raleway;
     /*float: right;*/
+
 }
 
 #menu {
     background-color: white;
-}
-
-h1{
+    border-bottom: solid;
 }
 
 h2{
     font-size: 1.1em;
+    font-family: 'Courier New', raleway;
+    text-transform: uppercase;
+}
+p{
+    font-family: 'Courier New', 'Delius Unicase', raleway;
 }
 
 /*///////////////// GRID + CODE FROM CLASS /////////////////*/
